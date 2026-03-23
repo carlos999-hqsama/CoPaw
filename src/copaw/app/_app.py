@@ -341,6 +341,11 @@ app.include_router(
 # POST /voice/incoming, WS /voice/ws, POST /voice/status-callback
 app.include_router(voice_router, tags=["voice"])
 
+# Custom channel routes (before SPA catch-all to ensure route priority)
+from .channels.registry import register_custom_channel_routes
+
+register_custom_channel_routes(app)
+
 # Console static files and SPA fallback
 # Register these AFTER API routes to ensure proper routing priority
 if os.path.isdir(_CONSOLE_STATIC_DIR):
