@@ -10,6 +10,7 @@ jobs:
     env:
       OS: ubuntu-latest
       PYTHON: "3.10"
+      ACTIONS_ALLOW_NODE24_LEGACY: "true"
     steps:
       - uses: actions/checkout@v4
 
