@@ -2158,7 +2158,7 @@ class FeishuChannel(BaseChannel):
         except Exception:
             logger.exception("streaming _stream_with_tracker error")
             if card_id and card_id != "":
-                await self._card_close(card_id)
+                await _close_card("")
             return
 
         # --- Post-processing ---
