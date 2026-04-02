@@ -1992,16 +1992,18 @@ class FeishuChannel(BaseChannel):
 
         async def _card_updater() -> None:
             nonlocal card_id, text_acc
+            last_pushed_text = ""
             while card_id and card_id != "":
                 await asyncio.sleep(_STREAMING_UPDATE_INTERVAL_SEC)
                 if not card_id or card_id == "":
                     break
-                if text_acc:
+                if text_acc and text_acc != last_pushed_text:
                     ok = await self._card_update_text(card_id, text_acc)
-                    if not ok:
+                    if ok:
+                        last_pushed_text = text_acc
+                    else:
                         card_id = ""
                         return
-
         async def _stop_updater() -> None:
             nonlocal _updater_task
             if _updater_task and not _updater_task.done():
