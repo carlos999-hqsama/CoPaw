@@ -2152,7 +2152,7 @@ class FeishuChannel(BaseChannel):
             if process_iterator is not None:
                 await process_iterator.aclose()
             if card_id and card_id != "":
-                await self._card_close(card_id)
+                await _close_card("")
             raise
 
         except Exception:
