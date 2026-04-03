@@ -33,6 +33,7 @@ from agentscope_runtime.engine.schemas.agent_schemas import (
     AudioContent,
     FileContent,
     ImageContent,
+    RunStatus,
     TextContent,
 )
 
@@ -151,7 +152,6 @@ finally:
 if TYPE_CHECKING:
     from agentscope_runtime.engine.schemas.agent_schemas import (
         AgentRequest,
-        RunStatus,
     )
 
 logger = logging.getLogger(__name__)
